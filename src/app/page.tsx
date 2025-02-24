@@ -105,23 +105,6 @@ const transformWord = () => {
           // Remove stress marks and slashes
           let transformed = firstPhonetic.replace(/[ˈˌ\/]/g, '');
           
-          // Add special handling for words ending in 'tion'
-          if (word.endsWith('tion')) {
-            transformed = transformed.replace('ʃən', 'ʃiN');
-          }
-          // Add special handling for 5+ letter words ending in 'an'
-          if (word.length >= 5 && word.endsWith('an')) {
-            transformed = transformed.replace('ən', 'iN');
-          }
-          // Add special handling for words ending in 'tten'
-          if (word.endsWith('tten')) {
-            transformed = transformed.replace('tən', 'iN');
-          }
-          // Add special handling for words ending in 'le'
-          if (word.endsWith('le')) {
-            transformed = transformed.replace('əɫ', 'ʊL');
-          }
-          
           let currentIndex = 0;
           
           // Sort by length to handle multi-character symbols first (like 'dʒ')
@@ -155,8 +138,21 @@ const transformWord = () => {
           // convert t to T when preceeded by K
           transformed = transformed.replace(/Kt/g, 'KT');
 
-          if(inputWord === ''){
-            //
+          // Add special handling for words ending in 'tion'
+          if (word.endsWith('tion')) {
+            transformed = transformed.slice(0, -3) + 'ʃiN';
+          }
+          // Add special handling for 5+ letter words ending in 'an'
+          if (word.length >= 5 && word.endsWith('an')) {
+            transformed = transformed.slice(0, -2) + 'iN';
+          }
+          // Add special handling for words ending in 'tten'
+          if (word.endsWith('tten')) {
+            transformed = transformed.slice(0, -3) + 'iN';
+          }
+          // Add special handling for words ending in 'le'
+          if (word.endsWith('le')) {
+            transformed = transformed.slice(0, -2) + 'ʊL';
           }
 
           allResults.push(transformed);
