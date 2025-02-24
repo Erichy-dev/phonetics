@@ -180,7 +180,7 @@ const transformWord = () => {
 
   const handleDownloadGuide = async () => {
     try {
-      const response = await fetch('/Meta_Script_Beta_.pdf');
+      const response = await fetch('/Meta_Script_v2.pdf');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -190,7 +190,7 @@ const transformWord = () => {
       
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'Meta Script™ Guide.pdf';
+      a.download = 'Meta Script™ Guide v2.pdf';
       document.body.appendChild(a);
       a.click();
       
@@ -366,7 +366,7 @@ const transformWord = () => {
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <Book className="w-5 h-5 text-blue-400" />
-                    <h3 className="text-white font-medium">User Guide</h3>
+                    <h3 className="text-white font-medium">User Guide v2</h3>
                   </div>
                   <Button
                     variant="outline"
@@ -375,7 +375,7 @@ const transformWord = () => {
                     onClick={handleDownloadGuide}
                   >
                     <Download className="w-4 h-4 mr-2" />
-                    Download
+                    Download v2
                   </Button>
                 </div>
                 <p className="text-sm text-blue-300/70">
