@@ -109,6 +109,18 @@ const transformWord = () => {
           if (word.endsWith('tion')) {
             transformed = transformed.replace('ʃən', 'ʃiN');
           }
+          // Add special handling for 5+ letter words ending in 'an'
+          if (word.length >= 5 && word.endsWith('an')) {
+            transformed = transformed.replace('ən', 'iN');
+          }
+          // Add special handling for words ending in 'tten'
+          if (word.endsWith('tten')) {
+            transformed = transformed.replace('tən', 'iN');
+          }
+          // Add special handling for words ending in 'le'
+          if (word.endsWith('le')) {
+            transformed = transformed.replace('əɫ', 'ʊL');
+          }
           
           let currentIndex = 0;
           
