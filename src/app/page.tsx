@@ -104,6 +104,12 @@ const transformWord = () => {
         if (phoneticValue !== '?') {
           // Remove stress marks and slashes
           let transformed = firstPhonetic.replace(/[ˈˌ\/]/g, '');
+          
+          // Add special handling for words ending in 'tion'
+          if (word.endsWith('tion')) {
+            transformed = transformed.replace('ʃən', 'ʃiN');
+          }
+          
           let currentIndex = 0;
           
           // Sort by length to handle multi-character symbols first (like 'dʒ')
@@ -136,6 +142,10 @@ const transformWord = () => {
           }
           // convert t to T when preceeded by K
           transformed = transformed.replace(/Kt/g, 'KT');
+
+          if(inputWord === ''){
+            //
+          }
 
           allResults.push(transformed);
 
